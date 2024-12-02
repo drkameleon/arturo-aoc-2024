@@ -1,0 +1,2 @@
+[a,b]: map decouple split.every:2 to :block read ./"input.txt" => sort
+print sum map 0..dec size a 'i -> abs a\[i] - b\[i]
