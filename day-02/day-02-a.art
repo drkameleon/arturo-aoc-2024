@@ -1,0 +1,5 @@
+rows: map read.lines ./"input.txt" => [to :block &]
+print enumerate rows 'row -> and? 
+    -> or? [row = sort row][row = sort.descending row]
+    -> every? 1..dec size row 'i 
+        -> in? abs row\[i]-row\[i-1] 1..3
