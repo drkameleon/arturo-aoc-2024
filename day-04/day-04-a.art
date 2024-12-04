@@ -1,0 +1,8 @@
+M: read.lines ./"input.txt"
+
+reverseV: $[m][ map m => reverse ]
+rotate90: $[m][ map 0..dec size m 'x -> join map m 'l -> l\[x] ]
+rotate45: $[m][ map 0..2*dec size m 'x -> join map select permutate.repeated.by:2 @0..dec size m => [x = sum &] 'p -> m\[p\0]\[p\1]]
+
+print sum map @[M, rotate90 M, rotate45 M, rotate45 reverseV M] 'matrix ->
+    sum map matrix 'l -> (match.count l "XMAS") + (match.count l "SAMX")
