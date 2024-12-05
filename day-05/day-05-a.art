@@ -1,0 +1,13 @@
+all: read.lines ./"input.txt"
+rules: join.with:" " collect all => [& <> ""]
+
+all | collect.after => empty?
+    | drop
+    | map => [split.by:"," &]
+    | select 'line [
+        every?.with:'i 0..(size line)-2 'item ->
+            contains? rules line\[i] ++ "|" ++ line\[i+1]
+    ]
+    | map 'row -> to :integer row\[(size row)/2]
+    | sum
+    | print 
